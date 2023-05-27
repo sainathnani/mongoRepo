@@ -22,4 +22,9 @@ public class Users {
         this.password = password;
         this.contact = contact;
     }
+
+    public Users(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

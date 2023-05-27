@@ -1,8 +1,8 @@
 package com.example.mongospring.controllers;
 
-
-import com.example.mongospring.requests.LoginDTO;
+import com.example.mongospring.requests.ProjectDetailsDTO;
 import com.example.mongospring.requests.SaveUserRequestDTO;
+import com.example.mongospring.service.users.ProjectService;
 import com.example.mongospring.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,30 +13,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UsersController {
+public class ProjectController {
 
     @Autowired
-    UserService userService;
+    ProjectService projectService;
 
-    @PostMapping("/saveUser")
+    @PostMapping("/createProject")
     @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Object> saveUser(@RequestBody SaveUserRequestDTO userRequestDTO) {
+    public ResponseEntity<Object> createProject(@RequestBody ProjectDetailsDTO projectDetails) {
 
-        String res = userService.saveUser(userRequestDTO);
+        String res = projectService.createProject(projectDetails);
 
         return new ResponseEntity<>(res, HttpStatus.OK);
 
     }
-
-    @PostMapping("/login")
-    @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Object> loginUser(@RequestBody LoginDTO userlogin) {
-
-        String res = userService.loginUser(userlogin);
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
-
-    }
-
 
 }

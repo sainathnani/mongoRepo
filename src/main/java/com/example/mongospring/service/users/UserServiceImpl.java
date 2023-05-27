@@ -30,6 +30,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String loginUser(LoginDTO userloginDTO) {
-        return null;
+        Users user = new Users(userloginDTO.getEmail(), userloginDTO.getPassword());
+        log.info(user.toString());
+        log.info(userloginDTO.toString());
+
+        usersRepository.findById(userloginDTO.getEmail());
+
+        return "Login Successfully";
     }
 }
