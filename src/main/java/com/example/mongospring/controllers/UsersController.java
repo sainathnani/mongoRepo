@@ -28,15 +28,20 @@ public class UsersController {
 
     }
 
+//    @PostMapping("/login")
+//    @CrossOrigin("http://localhost:3000/")
+//    public ResponseEntity<Object> loginUser(@RequestBody LoginDTO userlogin) {
+//
+//        String res = userService.loginUser(userlogin);
+//
+//        return new ResponseEntity<>(res, HttpStatus.OK);
+//
+//    }
+
     @PostMapping("/login")
     @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Object> loginUser(@RequestBody LoginDTO userlogin) {
-
-        String res = userService.loginUser(userlogin);
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
-
+    public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDTO) {
+        return userService.authenticateUser(loginDTO);
     }
-
 
 }

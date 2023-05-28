@@ -14,6 +14,10 @@ public class Users {
     private String email;
     private String password;
 
+    public Users() {
+
+    }
+
     public Users(String firstName, String lastName,String email,String password,String contact) {
         super();
         this.firstName = firstName;
