@@ -1,15 +1,13 @@
 package com.example.mongospring.service.users;
 
-import com.example.mongospring.entity.Projects;
-import com.example.mongospring.entity.Users;
+import com.example.mongospring.entity.Project;
 import com.example.mongospring.repositories.ProjectRepository;
-import com.example.mongospring.repositories.UsersRepository;
-import com.example.mongospring.requests.LoginDTO;
 import com.example.mongospring.requests.ProjectDetailsDTO;
-import com.example.mongospring.requests.SaveUserRequestDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -20,7 +18,7 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public String createProject(ProjectDetailsDTO projectDetailsDTO) {
-        Projects project = new Projects(projectDetailsDTO.getProjectName(),
+        Project project = new Project(projectDetailsDTO.getProjectName(),
                 projectDetailsDTO.getProjectDescription(),projectDetailsDTO.getProjectVisibiltyDate());
         log.info(project.toString());
         log.info(projectDetailsDTO.toString());
@@ -30,6 +28,11 @@ public class ProjectServiceImpl implements ProjectService{
         return "ProjectSuccess";
     }
 
+    @Override
+    public List<Project> getProjectData() {
+        List<Project> projectList = projectsRepository.findAll();
+        return projectList;
+    }
 
 
 

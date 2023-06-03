@@ -63,4 +63,27 @@ public class UserServiceImpl implements UserService {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Credentials");
         }
     }
+
+
+    @Override
+    public ResponseEntity<String> authenticateUserByEmailId(LoginDTO loginDTO) {
+        log.info(loginDTO.toString());
+
+        Users authenticatedUser = usersRepository.findByEmailId(loginDTO.getEmail());
+//        Users authenticatedPwd = usersRepository.findByEmailId(loginDTO.getPassword());
+
+
+        //log.info(authenticatedUser.toString());
+        if (authenticatedUser != null) {
+            // User is authenticated, proceed with login
+            // Return success response
+            return ResponseEntity.ok("Login Successfully");
+        }
+        else {
+            // Invalid credentials
+            // Return error response or unauthorized status
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Credentials");
+        }
+    }
+
 }

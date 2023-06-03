@@ -44,4 +44,10 @@ public class UsersController {
         return userService.authenticateUser(loginDTO);
     }
 
+    @PostMapping("/loginByEmailId")
+    @CrossOrigin("http://localhost:3000/")
+    public ResponseEntity<String> authenticateUserByEmailId(@RequestBody LoginDTO loginDTO) {
+        return userService.authenticateUserByEmailId(loginDTO);
+    }
+
 }

@@ -10,4 +10,5 @@ public interface UserService {
     String saveUser(SaveUserRequestDTO userRequestDTO);
 //    String loginUser(LoginDTO userloginDTO);
     ResponseEntity<String> authenticateUser(LoginDTO loginDTO);
+    ResponseEntity<String> authenticateUserByEmailId(LoginDTO loginDTO);
 }
